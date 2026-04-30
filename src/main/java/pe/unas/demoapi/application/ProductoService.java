@@ -1,26 +1,27 @@
 package pe.unas.demoapi.application;
 
 import org.springframework.stereotype.Service;
-import pe.unas.demoapi.domain.Producto;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class ProductoService {
+    private List<String> productos = new ArrayList<>();
 
-    private final List<Producto> productos = new ArrayList<>();
+    public ProductoService() {
+        productos.add("Laptop");
+        productos.add("Mouse");
+    }
 
-    public List<Producto> listar() {
+    public List<String> listar() {
         return productos;
     }
 
     public void agregar(String nombre) {
-        productos.add(new Producto(nombre));
+        productos.add(nombre);
     }
 
     public void eliminar(String nombre) {
-        productos.removeIf(p -> p.getNombre().equals(nombre));
+        productos.remove(nombre);
     }
 
     public int total() {

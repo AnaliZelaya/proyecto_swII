@@ -2,14 +2,11 @@ package pe.unas.demoapi.presentation;
 
 import org.springframework.web.bind.annotation.*;
 import pe.unas.demoapi.application.ProductoService;
-import pe.unas.demoapi.domain.Producto;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/productos")
 public class ProductoController {
-
     private final ProductoService service;
 
     public ProductoController(ProductoService service) {
@@ -17,18 +14,20 @@ public class ProductoController {
     }
 
     @GetMapping
-    public List<Producto> listar() {
+    public List<String> listar() {
         return service.listar();
     }
 
     @PostMapping
-    public void agregar(@RequestParam String nombre) {
+    public String agregar(@RequestParam String nombre) {
         service.agregar(nombre);
+        return "Producto agregado";
     }
 
     @DeleteMapping
-    public void eliminar(@RequestParam String nombre) {
+    public String eliminar(@RequestParam String nombre) {
         service.eliminar(nombre);
+        return "Producto eliminado";
     }
 
     @GetMapping("/total")
