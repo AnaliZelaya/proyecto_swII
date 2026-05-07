@@ -9,7 +9,7 @@ public class ProductoService {
 
     public ProductoService() {
         productos.add("Laptop");
-        productos.add("Mouse");
+        productos.add("CPU");
     }
 
     public List<String> listar() {
